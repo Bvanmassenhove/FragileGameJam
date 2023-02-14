@@ -21,6 +21,8 @@ public class hook : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
+		rb.constraints = RigidbodyConstraints2D.None;
 		if (!hooking)
 		{
 			rb.transform.position = player.transform.position;
@@ -30,15 +32,21 @@ public class hook : MonoBehaviour
 		{
 			Vector3 slingPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			ShootSling(slingPos);
-		}
+        }
 
-		if (!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
+        {
+            RetractSling();
+        }
+		if (Input.GetMouseButtonDown(1))
 		{
-			RetractSling();
+			Vector3 slingPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			ShootSling(slingPos);
 		}
 
 		if (hooked)
 		{
+			rb.constraints = RigidbodyConstraints2D.FreezeAll;
 			Vector3 toHook = rb.transform.position - player.transform.position;
 			player.velocity = toHook.normalized * retractspeed;
 		}
