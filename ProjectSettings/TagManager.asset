@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Player
   - Hook
-  - platform
+  - Platform
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1366485887
+    locked: 0
+  - name: Hook
+    uniqueID: 320150459
     locked: 0
