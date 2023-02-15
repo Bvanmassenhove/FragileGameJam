@@ -11,9 +11,13 @@ public class hook : MonoBehaviour
 	[SerializeField] private float retractspeed;
 	[SerializeField] private Rigidbody2D player;
 
+    public float checkRadius;
+    public LayerMask whatIsPlatform;
 
-	// Start is called before the first frame update
-	void Start()
+	bool M1 = false;
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -24,20 +28,35 @@ public class hook : MonoBehaviour
 		if (!hooking)
 		{
 			rb.transform.position = player.transform.position;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 slingPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            ShootSling(slingPos);
+			M1 = true;
 		}
 
-		if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
 		{
 			Vector3 slingPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			ShootSling(slingPos);
+            ShootSling(slingPos);
 		}
 
-		if (!Input.GetMouseButton(0))
-		{
-			RetractSling();
+        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
+        {
+            RetractSling();
+			M1 = false;
+
 		}
 
-		if (hooked)
+        if (Physics2D.OverlapCircle(rb.position, checkRadius, whatIsPlatform))
+        {
+			hooked = true;
+			rb.constraints = RigidbodyConstraints2D.FreezeAll;
+		}
+
+		if (hooked && M1)
 		{
 			Vector3 toHook = rb.transform.position - player.transform.position;
 			player.velocity = toHook.normalized * retractspeed;
@@ -47,8 +66,6 @@ public class hook : MonoBehaviour
 	void ShootSling(Vector3 slingPos)
 	{
 		hooking = true;
-		rb.simulated = true;
-
 		Vector3 toHook = slingPos - player.transform.position;
 		rb.velocity = toHook * hookspeed;
 	}
@@ -57,14 +74,6 @@ public class hook : MonoBehaviour
 	{
 		hooking = false;
 		hooked = false;
-		rb.simulated = false;
-	}
-
-	// Update is called once per frame
-
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		rb.simulated = false;
-		hooked = true;
+		rb.constraints = RigidbodyConstraints2D.None;
 	}
 }

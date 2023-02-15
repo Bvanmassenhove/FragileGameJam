@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 468342770}
   - component: {fileID: 468342769}
   - component: {fileID: 468342768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 900582991}
   - component: {fileID: 900582990}
   - component: {fileID: 900582989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 1015285039}
   - component: {fileID: 1015285038}
   - component: {fileID: 1015285037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1125376038}
   - component: {fileID: 1125376037}
   - component: {fileID: 1125376036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 1623914602}
   - component: {fileID: 1623914601}
   - component: {fileID: 1623914600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1208,7 @@ GameObject:
   - component: {fileID: 2138533178}
   - component: {fileID: 2138533177}
   - component: {fileID: 2138533176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Sprite (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,8 +1341,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100744410}
     - target: {fileID: 2496192797741365426, guid: ccb47b0c63fdaa14a9a40860a17d54d5, type: 3}
+      propertyPath: checkRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496192797741365426, guid: ccb47b0c63fdaa14a9a40860a17d54d5, type: 3}
       propertyPath: retractspeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496192797741365426, guid: ccb47b0c63fdaa14a9a40860a17d54d5, type: 3}
+      propertyPath: whatIsPlatform.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2496192797741365427, guid: ccb47b0c63fdaa14a9a40860a17d54d5, type: 3}
       propertyPath: m_Name
